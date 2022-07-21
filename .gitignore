@@ -1,16 +1,15 @@
-*/.env*
-*/node_modules/
-*/package-lock.json
-*/out
-*/build
-*/public
-*/*/img
-*/artifacts
-*/.next
+.env*
+node_modules/
+package-lock.json
+out
+build
+public
+*/img
+.next
 .DS_Store
 */.DS_Store
 */*/.DS_Store
 */*/*/.DS_Store
 */*/*/*/.DS_Store
-*/yarn.lock
+yarn.lock
 
