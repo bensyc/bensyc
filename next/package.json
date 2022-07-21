@@ -1,0 +1,28 @@
+{
+  "name": "bensyc.eth",
+  "homepage": "https://bensyc.eth.limo",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build && next export",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@rainbow-me/rainbowkit": "0.1.0",
+    "ethers": "^5.6.1",
+    "framer-motion": "^6.3.3",
+    "next": "12.1.6",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "wagmi": "^0.3.5",
+    "web3": "^1.7.3"
+  },
+  "devDependencies": {
+    "@types/node": "17.0.32",
+    "@types/react": "^18.0.9",
+    "eslint": "8.15.0",
+    "eslint-config-next": "12.1.6",
+    "typescript": "4.6.4"
+  }
+}
