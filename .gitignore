@@ -3,10 +3,10 @@
 */package-lock.json
 */out
 */build
-next/public
+*/public
 */*/img
 */artifacts
-next/.next
+*/.next
 .DS_Store
 */.DS_Store
 */*/.DS_Store

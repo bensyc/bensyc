@@ -1,1 +1,1 @@
-# bensyc
+# Bored ENS Yacht Club
