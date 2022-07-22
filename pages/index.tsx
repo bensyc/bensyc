@@ -4,9 +4,7 @@ import Head from 'next/head';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import {
-  useSigner,
   useConnect,
-  useSignMessage,
   useContractRead,
   useContractWrite,
   useWaitForTransaction
@@ -16,7 +14,7 @@ import FlipCard, { BackCard, FrontCard } from '../components/FlipCard';
 import { ethers } from 'ethers';
 
 const contractConfig = {
-  addressOrName: '0x86fbbb1254c39602a7b067d5ae7e5c2bdfd61a30',
+  addressOrName: '0x1c16d646474acf0b3f7d28708bd30bfd29b5c9ac',
   contractInterface: contractInterface,
 };
 
@@ -29,7 +27,15 @@ const Home: NextPage = () => {
     write: mint,
     isLoading: isMintLoading,
     isSuccess: isMintStarted,
-  } = useContractWrite(contractConfig, 'mint');
+  } = useContractWrite(
+    contractConfig,
+    'mint',
+    {
+      overrides: {
+        value: ethers.utils.parseEther("0.01")
+      }
+    }
+  );
 
   const { data: totalSupplyData } = useContractRead(
     contractConfig,
@@ -54,7 +60,7 @@ const Home: NextPage = () => {
       <Head>
         <title>bensyc.eth</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="shortcut icon" href="logo.png" />
+        <link rel="shortcut icon" href="/logo.png" />
       </Head>
       <div className="container">
       <ConnectButton />
