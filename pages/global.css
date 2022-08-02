@@ -7,6 +7,15 @@
 		padding: 0;
 }
 
+@font-face {
+    font-family: 'SFMono';
+    src: url('../public/SFMono.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+		margin: 0;
+		padding: 0;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +28,7 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url('../public/background.png');
+  background: url('../background.png');
   background-size: cover;
   border-radius: 0px !important;
 }
@@ -38,7 +47,7 @@ body {
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 0px 0px;
+  padding: 40px 40px;
 }
 
 .button {
@@ -55,6 +64,23 @@ body {
   align-items: left;
   color: white;
   transition: all ease 100ms;
+}
+
+.refreshButton {
+  appearance: none;
+  border: none;
+  font-family: "EarthOrbiter";
+  background-image: linear-gradient(to right, #3898FF, #7A70FF);
+  line-height: 1;
+  font-size: 16px;
+  font-weight: 600;
+  height: 35px;
+  padding: 6px 24px;
+  border-radius: 6px;
+  align-items: left;
+  color: white;
+  transition: all ease 100ms;
+  margin-left: 104px;
 }
 
 button:not(:disabled):hover {
