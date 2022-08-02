@@ -3,6 +3,7 @@
   "homepage": "https://bensyc.eth.limo",
   "version": "0.0.1",
   "scripts": {
+    "postinstall": "patch-package",
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
@@ -26,6 +27,7 @@
     "@types/react": "^18.0.9",
     "eslint": "8.15.0",
     "eslint-config-next": "12.1.6",
+    "patch-package": "^6.4.7",
     "typescript": "4.6.4"
   }
 }
