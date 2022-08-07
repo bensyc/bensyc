@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'Earth Orbiter';
+    font-family: 'EarthOrbiter';
     src: url('../public/EarthOrbiter.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
@@ -24,7 +24,7 @@
 
 body {
   margin: 0;
-  font-family: "Earth Orbiter";
+  font-family: "EarthOrbiter";
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -38,8 +38,19 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  max-width: 700px;
   margin: 0 auto;
+}
+
+.info {
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0 auto;
+}
+
+.route {
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .container {
@@ -47,13 +58,13 @@ body {
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 40px 40px;
+  padding: 10px 20px;
 }
 
 .button {
   appearance: none;
   border: none;
-  font-family: "SF Pro Rounded";
+  font-family: "EarthOrbiter";
   background-image: linear-gradient(to right, #3898FF, #7A70FF);
   line-height: 1;
   font-size: 16px;
@@ -119,7 +130,7 @@ button[data-mint-done="true"] {
 
 h1 {
   font-size: 32px;
-  font-family: "Earth Orbiter";
+  font-family: "EarthOrbiter";
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale
@@ -127,8 +138,22 @@ h1 {
 h2 { font-size: 36px; weight: 800 }
 h3 { font-size: 24px; weight: 800 }
 h4 { font-size: 18px; weight: 800 }
-a { color: inherit }
 
+a:link {
+  color: blue;
+  background-color: transparent;
+  text-decoration: none;
+  padding: 1px 3px;
+  border-radius: 3px;
+}
+
+a:hover {
+  color: white;
+  background-color: black;
+  text-decoration: none;
+  padding: 1px 3px;
+  border-radius: 3px;
+}
 @keyframes pulse {
   0% { opacity: 0 }
   100% { opacity: '100%' }
