@@ -13,13 +13,8 @@ import {
 } from 'wagmi';
 import contractInterface from '../contract-abi.json';
 import { ethers } from 'ethers';
-const pinataSDK = require('@pinata/sdk');
 import { isMobile } from 'react-device-detect';
 
-const pinataApiKey = process.env.NEXT_PUBLIC_PINATA_KEY;
-const pinataApiSecret = process.env.NEXT_PUBLIC_PINATA_SECRET;
-const pinata = pinataSDK(pinataApiKey,pinataApiSecret);
-const pinataUrl = "https://api.pinata.cloud/pinning/pinFileToIPFS";
 const contractConfig = {
   addressOrName: '0xC948BB07B8cf62E5D2e97993a9e539E3189Af42F',
   contractInterface: contractInterface,
@@ -108,43 +103,9 @@ const Home: NextPage = () => {
       setPinning(true);
       for (let i = 0; i < batchSize; i++) {
         setCount(i + 1);
-        const base64 = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAA2ElEQVR4nADIADf/BEEz6y4msm5D3EL3YgRPBAy2QkOlpLc0iwHIyiDK5HwOhFYSB4+oBC4tzt0O+0wl6KMA9ErkLA4BM+EcSIWVtd77E4q1hiUdCmL+AcXnELn4ntJ20DQsMBb6QABLdDti5Mi2rwObAyRIL6OdejJhIqntFuv6l2/d0yGq9FUC58zXZfTSGLv32fQ31/SMe0yrtRoRbnkzAtH3UCG6x5QgFvSZxcEMVHrfTN3kAO0Z5wT5CvGlGebGKbVcMB2Wsb1uzi62AfRKpFMBAAD///G+YGI1aSAbAAAAAElFTkSuQmCC`;
-        const body = {
-          "name": `${totalMinted + i}.BoredENSYachtClub.eth`,
-          "order": `${totalMinted + i + 1}`,
-          "description": `Bored ENS Yacht Club member ${totalMinted + i + 1}`,
-          "external_url": `https://${totalMinted + i}.boredensyachtclub.eth.limo`,
-          "image": `${base64}`,
-          "background_color" : '000000',
-          "image_data": `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><parent><svg width="1cm" height="1cm"><image href="${base64}"/></svg></parent>`,
-          "attributes": [
-            {
-              "trait_type": "Prime",
-              "value": ""
-            },
-            {
-              "trait_type": "Palindrome",
-              "value": ""
-            },
-          ]
-        };
-        const options = {
-            pinataMetadata: {
-                name: `${totalMinted + i}.bensyc.eth`
-            },
-            pinataOptions: {
-                cidVersion: 0
-            }
-        };
-        await pinata.pinJSONToIPFS(body, options)
-        .then(result => {
-          console.log(`JSON ${i + 1}: ` + result.IpfsHash);
-          jsonFiles.push(result.IpfsHash);
-          setHash(result.IpfsHash);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+        jsonFiles.push(`${totalMinted + i}.boredensyachtclub.eth`);
+        setHash(`${totalMinted + i}.boredensyachtclub.eth`);
+        console.log(`${totalMinted + i}.boredensyachtclub.eth`);
       }
 
       if (batchSize === 1 && jsonFiles.length === 1) {
@@ -157,7 +118,7 @@ const Home: NextPage = () => {
         setHashCount(0);
         setCount(0);
         setHash('');
-        window.alert('❌ Failed to pin metadata to IPFS');
+        window.alert('❌❌❌');
       }
     }
 
@@ -247,8 +208,8 @@ const Home: NextPage = () => {
                     pinToMint();
                   }}
                 >
-                  {!isPinning && 'Request 1 🎁'}
-                  {isPinning && 'Preparing 1 ⌛'}
+                  {!isPinning && 'Request 🎁'}
+                  {isPinning && 'Preparing ⌛'}
                 </button>
               </div>
             )}
@@ -266,7 +227,7 @@ const Home: NextPage = () => {
                 >
                   {isMintLoading && 'Waiting for approval ⌛'}
                   {isMintStarted && 'Minting ⌛'}
-                  {!isMintLoading && !isMintStarted && 'Mint 1 🎁'}
+                  {!isMintLoading && !isMintStarted && 'Mint 🎁'}
                 </button>
                 {isPinning && (
                   <button
@@ -280,7 +241,7 @@ const Home: NextPage = () => {
                 <p
                   style={{ fontSize: 14, marginTop: 10 }}
                 >
-                  {hash && ('✅ metadata: ')}<a rel="noreferrer" target='_blank' href={`https://ipfs.io/ipfs/${hash}`} style={{ fontFamily: 'SFMono' }}>{hash}</a>
+                  ✅ ready to mint <span style={{ color: 'blue', fontFamily: 'SFMono' }}>{hashCount}</span> subdomain
                 </p>
               </div>
             )}
@@ -295,14 +256,9 @@ const Home: NextPage = () => {
                     pinToMint();
                   }}
                 >
-                {!isPinning && `Request ${batchSize} 🎁`}
-                {isPinning && `Preparing ${count} ⌛`}
+                {!isPinning && `Request 🎁`}
+                {isPinning && `Preparing ⌛`}
                 </button>
-                <p
-                  style={{ fontSize: 14, marginTop: 10 }}
-                >
-                  {hash && (`metadata ${count - 1}: `)}<a rel="noreferrer" target='_blank' href={`https://ipfs.io/ipfs/${hash}`} style={{ fontFamily: 'SFMono' }}>{hash}</a>
-                </p>
               </div>
             )}
 
@@ -319,7 +275,7 @@ const Home: NextPage = () => {
                 >
                   {isBatchMintLoading && 'Waiting for approval ⌛'}
                   {isBatchMintStarted && 'Batch minting ⌛'}
-                  {!isBatchMintLoading && !isBatchMintStarted && `Mint ${batchSize} 🎁`}
+                  {!isBatchMintLoading && !isBatchMintStarted && `Mint 🎁`}
                 </button>
                 {isPinning && (
                   <button
@@ -333,12 +289,7 @@ const Home: NextPage = () => {
                 <p
                   style={{ fontSize: 14, marginTop: 10 }}
                 >
-                  {hash && (`metadata ${batchSize}: `)}<a rel="noreferrer" target='_blank' href={`https://ipfs.io/ipfs/${hash}`} style={{ fontFamily: 'SFMono' }}>{hash}</a>
-                </p>
-                <p
-                  style={{ fontSize: 14, marginTop: 10 }}
-                >
-                  ✅ pinned <span style={{ color: 'blue', fontFamily: 'SFMono' }}>{hashCount}</span> metadata hashes to ipfs
+                  ✅ ready to mint <span style={{ color: 'blue', fontFamily: 'SFMono' }}>{hashCount}</span> subdomains
                 </p>
               </div>
             )}

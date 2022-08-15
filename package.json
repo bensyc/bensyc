@@ -1,16 +1,14 @@
 {
   "name": "bensyc.eth",
-  "homepage": "https://bensyc.eth.limo",
+  "homepage": "http://bensyc.xyz",
   "version": "0.0.1",
   "scripts": {
-    "postinstall": "patch-package",
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@pinata/sdk": "^1.1.26",
     "@rainbow-me/rainbowkit": "^0.1.0",
     "ethers": "^5.6.1",
     "framer-motion": "^6.3.3",
