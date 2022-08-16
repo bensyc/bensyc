@@ -131,8 +131,12 @@ const Home: NextPage = () => {
       </Head>
 
       <div className="container">
-        <div style={{ marginLeft: '20px', marginBottom: '15px' }}>
+        <div style={{ marginLeft: '20px', marginBottom: '15px', marginTop: '15px' }}>
           <ConnectButton />
+        </div>
+        <br></br>
+        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+          <img style={{ borderRadius: '6px' }} alt="sample" src="bensyc.gif" width="200" height="200"/>
         </div>
         <br></br><br></br>
         <div className="route" style={{ float: 'left', marginLeft: '20px' }}>
@@ -145,15 +149,15 @@ const Home: NextPage = () => {
               <a>info</a>
           </Link>
         </div>
-        <br></br><br></br>
+        <br></br>
         <div style={{ flex: '1 1 auto' }}>
-          <img style={{ float: 'left', marginTop: '0px' }} alt="sample" src="chimp.png" width="104" height="200"/>
+          <img style={{ float: 'left', marginTop: '0px' }} alt="sample" src="avatar.png" width="150" height="150"/>
           <div style={{ marginTop: '50px' }}>
             <h1>Bored ENS Yacht Club</h1>
-            <p style={{ marginTop: '10px', marginLeft: '109px', marginBottom: '20px' }}>
-              <span style= {{ fontFamily: 'SFMono' }}>{totalMinted}</span> minted so far!
+            <p style={{ marginTop: '10px', marginLeft: '170px', marginBottom: '20px' }}>
+              <span style= {{ fontFamily: 'SFMono', color: 'blue' }}>{totalMinted}</span> minted so far!
             </p>
-            <div style={{ marginLeft: '109px' }}>
+            <div style={{ marginLeft: '170px' }}>
               <p style={{ marginTop: '5px' }}>
                 ↓ enter number of subdomains to mint
               </p>
@@ -199,7 +203,7 @@ const Home: NextPage = () => {
             <br></br>
 
             {isConnected && hashCount === 0 && !isMinted && batchSize == 1 && (
-              <div style={{ marginLeft: 109 }}>
+              <div style={{ marginLeft: 170 }}>
                 <button
                   disabled={isPinning}
                   className="button"
@@ -208,14 +212,14 @@ const Home: NextPage = () => {
                     pinToMint();
                   }}
                 >
-                  {!isPinning && 'Request 🎁'}
-                  {isPinning && 'Preparing ⌛'}
+                  {!isPinning && 'request 🎁'}
+                  {isPinning && 'preparing ⌛'}
                 </button>
               </div>
             )}
 
             {isConnected && hashCount === 1 && !isMinted && batchSize == 1 && (
-              <div style={{ marginLeft: 109 }}>
+              <div style={{ marginLeft: 170 }}>
                 <button
                   disabled={isMintLoading || isMintStarted}
                   className="button"
@@ -225,9 +229,9 @@ const Home: NextPage = () => {
                     mint();
                   }}
                 >
-                  {isMintLoading && 'Waiting for approval ⌛'}
-                  {isMintStarted && 'Minting ⌛'}
-                  {!isMintLoading && !isMintStarted && 'Mint 🎁'}
+                  {isMintLoading && 'waiting for approval ⌛'}
+                  {isMintStarted && 'minting ⌛'}
+                  {!isMintLoading && !isMintStarted && 'mint 🎁'}
                 </button>
                 {isPinning && (
                   <button
@@ -235,19 +239,35 @@ const Home: NextPage = () => {
                     style={{ marginLeft: 10 }}
                     onClick={() => window.location.reload()}
                     >
-                    {'Refresh'}
+                    {'refresh'}
                   </button>
                 )}
-                <p
-                  style={{ fontSize: 14, marginTop: 10 }}
-                >
-                  ✅ ready to mint <span style={{ color: 'blue', fontFamily: 'SFMono' }}>{hashCount}</span> subdomain
-                </p>
+                {isPinning && !isMintLoading && !isMintStarted && (
+                  <p
+                    style={{ fontSize: 14, marginTop: 10 }}
+                  >
+                    ✅ ready to mint <span style={{ color: 'blue', fontFamily: 'SFMono' }}>{hashCount}</span> subdomain
+                  </p>
+                )}
+                {isPinning && isMintLoading && (
+                  <p
+                    style={{ fontSize: 14, marginTop: 10 }}
+                  >
+                    ⌛ waiting for approval in wallet
+                  </p>
+                )}
+                {isPinning && isMintStarted && (
+                  <p
+                    style={{ fontSize: 14, marginTop: 10 }}
+                  >
+                    ⌛ minting subdomain
+                  </p>
+                )}
               </div>
             )}
 
             {isConnected && hashCount === 0 && !isBatchMinted && 12 >= batchSize && batchSize >= 2 && (
-              <div style={{ marginLeft: 109 }}>
+              <div style={{ marginLeft: 170 }}>
                 <button
                   disabled={isPinning}
                   className="button"
@@ -256,14 +276,14 @@ const Home: NextPage = () => {
                     pinToMint();
                   }}
                 >
-                {!isPinning && `Request 🎁`}
-                {isPinning && `Preparing ⌛`}
+                {!isPinning && `request 🎁`}
+                {isPinning && `preparing ⌛`}
                 </button>
               </div>
             )}
 
             {isConnected && hashCount === batchSize && !isBatchMinted && 12 >= batchSize && batchSize >= 2 && (
-              <div style={{ marginLeft: 109 }}>
+              <div style={{ marginLeft: 170 }}>
                 <button
                   disabled={isBatchMintLoading || isBatchMintStarted}
                   className="button"
@@ -273,9 +293,9 @@ const Home: NextPage = () => {
                     batchMint();
                   }}
                 >
-                  {isBatchMintLoading && 'Waiting for approval ⌛'}
-                  {isBatchMintStarted && 'Batch minting ⌛'}
-                  {!isBatchMintLoading && !isBatchMintStarted && `Mint 🎁`}
+                  {isBatchMintLoading && 'waiting for approval ⌛'}
+                  {isBatchMintStarted && 'batch minting ⌛'}
+                  {!isBatchMintLoading && !isBatchMintStarted && `mint 🎁`}
                 </button>
                 {isPinning && (
                   <button
@@ -283,38 +303,54 @@ const Home: NextPage = () => {
                     style={{ marginLeft: 10 }}
                     onClick={() => window.location.reload()}
                     >
-                    {'Refresh'}
+                    {'refresh'}
                   </button>
                 )}
-                <p
-                  style={{ fontSize: 14, marginTop: 10 }}
-                >
-                  ✅ ready to mint <span style={{ color: 'blue', fontFamily: 'SFMono' }}>{hashCount}</span> subdomains
-                </p>
+                {isPinning && !isBatchMintLoading && !isBatchMintStarted && (
+                  <p
+                    style={{ fontSize: 14, marginTop: 10 }}
+                  >
+                    ✅ ready to mint <span style={{ color: 'blue', fontFamily: 'SFMono' }}>{hashCount}</span> subdomains
+                  </p>
+                )}
+                {isPinning && isBatchMintLoading && (
+                  <p
+                    style={{ fontSize: 14, marginTop: 10 }}
+                  >
+                    ⌛ waiting for approval in wallet
+                  </p>
+                )}
+                {isPinning && isBatchMintStarted && (
+                  <p
+                    style={{ fontSize: 14, marginTop: 10 }}
+                  >
+                    ⌛ batch minting <span style={{ color: 'blue', fontFamily: 'SFMono' }}>{hashCount}</span> subdomains
+                  </p>
+                )}
               </div>
             )}
           </div>
           {isMinted && batchSize == 1 && (
             <div style={{ marginRight: 0, marginTop: 10 }}>
               <p
-                style={{ marginLeft: 110, fontSize: 14 }}
-              >✅ minted subdomain <span style={{ color: 'blue', fontFamily: 'SFMono' }}><a rel="noreferrer" target='_blank' href={`https://boredensyachtclub.eth.limo`} style={{ textDecoration: 'none' }}>{totalMinted - 1}.bensyc.eth</a></span></p>
+                style={{ marginLeft: 110, fontSize: 14, marginTop: 10 }}
+              >✅ minted subdomain: <span style={{ color: 'blue', fontFamily: 'SFMono' }}><a rel="noreferrer" target='_blank' href={`https://boredensyachtclub.eth.limo`} style={{ textDecoration: 'none' }}>{totalMinted - 1}</a></span> .bensyc.eth</p>
               <p
-                style={{ marginLeft: 110, fontSize: 14 }}
+                style={{ marginLeft: 110, fontSize: 14, marginTop: 10 }}
               >
                 OpenSea: <a rel="noreferrer" target='_blank' href={`https://testnets.opensea.io/assets/rinkeby/${mintData?.to}/${totalMinted - 1}`} style={{ fontFamily: 'SFMono' }}>Link</a>
               </p>
               <p
-                style={{ marginLeft: 110, fontSize: 14 }}
+                style={{ marginLeft: 110, fontSize: 14, marginTop: 10 }}
               >
                 EtherScan: <a rel="noreferrer" target='_blank' href={`https://rinkeby.etherscan.io/tx/${mintData?.hash}`} style={{ fontFamily: 'SFMono' }}>Link</a>
               </p>
               <button
                 className="button"
-                style={{ marginLeft: 110, marginTop: 10 }}
+                style={{ marginLeft: 110, marginTop: 20 }}
                 onClick={() => window.location.reload()}
                 >
-                {'Refresh'}
+                {'mint again'}
               </button>
             </div>
           )}
@@ -322,24 +358,24 @@ const Home: NextPage = () => {
           {isBatchMinted && 12 >= batchSize && batchSize >= 2 && (
             <div style={{ marginRight: 0, marginTop: 10 }}>
               <p
-                style={{ marginLeft: 110, fontSize: 14 }}
-              >✅ minted subdomains <a rel="noreferrer" target='_blank' href={`https://boredensyachtclub.eth.limo`}><span style={{ fontFamily: 'SFMono' }}>{totalMinted - batchSize}.bensyc.eth</span> - <span style={{ fontFamily: 'SFMono' }}>{totalMinted - 1}.bensyc.eth</span></a></p>
+                style={{ marginLeft: 110, fontSize: 14, marginTop: 10 }}
+              >✅ minted subdomains: <a rel="noreferrer" target='_blank' href={`https://boredensyachtclub.eth.limo`}><span style={{ fontFamily: 'SFMono' }}>{totalMinted - batchSize}</span> - <span style={{ fontFamily: 'SFMono' }}>{totalMinted - 1}</span></a> .bensyc.eth</p>
               <p
-                style={{ marginLeft: 115, fontSize: 14 }}
+                style={{ marginLeft: 115, fontSize: 14, marginTop: 10 }}
               >
                 OpenSea: <a rel="noreferrer" target='_blank' href={`https://testnets.opensea.io/assets/rinkeby/${batchMintData?.to}/${totalMinted - 1}`} style={{ fontFamily: 'SFMono' }}>Link</a>
               </p>
               <p
-                style={{ marginLeft: 115, fontSize: 14 }}
+                style={{ marginLeft: 115, fontSize: 14, marginTop: 10 }}
               >
                 EtherScan: <a rel="noreferrer" target='_blank' href={`https://rinkeby.etherscan.io/tx/${batchMintData?.hash}`} style={{ fontFamily: 'SFMono' }}>Link</a>
               </p>
               <button
                 className="button"
-                style={{ marginLeft: 110, marginTop: 10 }}
+                style={{ marginLeft: 110, marginTop: 20 }}
                 onClick={() => window.location.reload()}
                 >
-                {'Refresh'}
+                {'mint again'}
               </button>
             </div>
           )}

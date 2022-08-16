@@ -18,7 +18,7 @@ const Info: NextPage = () => {
               <a>← go back</a>
           </Link>
         </div>
-        <div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div style={{ marginTop: '100px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <h1>Bored ENS Yacht Club</h1>
             <div style={{ marginRight: 0, marginTop: 10 }}>
