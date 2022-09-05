@@ -668,16 +668,16 @@ const Home: NextPage = () => {
                 <img style={{ borderRadius: '6px' }} alt="sample" src="bensyc.gif" width="100" height="100"/>
               </div>
               <div style={{ marginBottom: 10 }}>
-                <h4 style={{textAlign: 'center'}}>what is bored ens yacht club (bensyc)?</h4>
+                <h4 style={{textAlign: 'center'}}>what is bored ens yacht club?</h4>
               </div>
               <div style={{ marginBottom: 20, marginLeft: 5, lineHeight: '15px' }}>
-                <p style={{ fontFamily: 'MajorMono', fontSize: `${fontSizeFAQ}`, fontWeight: 800, textAlign: 'center' }}>bensyc is the first ens 10k subdomain collection where the subdomain nft is your membership to the club.</p>
+                <p style={{ fontFamily: 'MajorMono', fontSize: `${fontSizeFAQ}`, fontWeight: 800, textAlign: 'center' }}>bored ens yacht club (bensyc) is the first ens 10k subdomain collection where the subdomain nft is your membership to the club.</p>
               </div>
               <div style={{ marginBottom: 10 }}>
                 <h4 style={{textAlign: 'center'}}>contract</h4>
               </div>
               <div style={{ marginBottom: 20, marginLeft: 5, lineHeight: '15px' }}>
-                <p style={{ fontFamily: 'MajorMono', fontSize: `${fontSizeFAQ}`, fontWeight: 800, textAlign: 'center' }}>0<span style={{ fontFamily: 'SFMono', fontSize: 12, fontWeight: 400 }}>x</span>000000...000000</p>
+                <p style={{ fontFamily: 'MajorMono', fontSize: `${fontSizeFAQ}`, fontWeight: 800, textAlign: 'center' }}><a rel="noreferrer" target='_blank' href={`https://etherscan.io/address/0xd3E58Bf93A1ad3946bfD2D298b964d4eCe1A9E7E`} style={{ textDecoration: 'none' }}>0<span style={{ fontFamily: 'SFMono', fontSize: 12, fontWeight: 400 }}>x</span>d3e58...a9e7e</a></p>
               </div>
               <div style={{ marginBottom: 10 }}>
                 <h4 style={{textAlign: 'center'}}>what is the purpose & vision of bensyc?</h4>
@@ -725,7 +725,7 @@ const Home: NextPage = () => {
                 <h4 style={{textAlign: 'center'}}><img className="largeicon" alt="icon" src="ape.png"/>🧪<img className="largeicon" alt="icon" src="322.svg"/></h4>
               </div>
               <div style={{ marginBottom: 20, marginLeft: 5, lineHeight: '15px' }}>
-                <p style={{ fontFamily: 'MajorMono', fontSize: `${fontSizeFAQ}`, fontWeight: 800, textAlign: 'center' }}>pssss... upon bensyc 10k subdomain mints, the founding team might have an additional surprise 👼. you didn&apos;t hear it from us.
+                <p style={{ fontFamily: 'MajorMono', fontSize: `${fontSizeFAQ}`, fontWeight: 800, textAlign: 'center' }}>pssss... upon bensyc 10k subdomain mints, the founding team might have an additional surprise 🧪. you didn&apos;t hear it from us.
                 </p>
               </div>
               <br></br>
