@@ -65,7 +65,7 @@ const Home: NextPage = () => {
     }
   }, [totalSupply]);
 
-  const startOn = 'September 4, 2022 12:00:00 UTC'
+  const startOn = 'September 9, 2022 12:00:00 UTC'
   const deadline = new Date(startOn).getTime();
 
   React.useEffect(() => {
