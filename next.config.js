@@ -4,7 +4,7 @@ const withImages = require('next-images');
 
 const nextConfig = {
   reactStrictMode: true,
-  assetPrefix: "",
+  assetPrefix: "#",
   images: {
     loader: 'akamai',
     path: '',

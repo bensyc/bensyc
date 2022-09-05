@@ -1,0 +1,26 @@
+diff --git a/node_modules/@wagmi/core/connectors/walletConnect/dist/wagmi-core-connectors-walletConnect.cjs.prod.js b/node_modules/@wagmi/core/connectors/walletConnect/dist/wagmi-core-connectors-walletConnect.cjs.prod.js
+index cfe9541..f75ade5 100644
+--- a/node_modules/@wagmi/core/connectors/walletConnect/dist/wagmi-core-connectors-walletConnect.cjs.prod.js
++++ b/node_modules/@wagmi/core/connectors/walletConnect/dist/wagmi-core-connectors-walletConnect.cjs.prod.js
+@@ -47,7 +47,7 @@ class WalletConnectConnector extends base.Connector {
+ 
+     base._defineProperty(this, "id", 'walletConnect');
+ 
+-    base._defineProperty(this, "name", 'WalletConnect');
++    base._defineProperty(this, "name", 'Wallet Connect');
+ 
+     base._defineProperty(this, "ready", true);
+ 
+diff --git a/node_modules/@wagmi/core/dist/declarations/src/connectors/walletConnect.d.ts b/node_modules/@wagmi/core/dist/declarations/src/connectors/walletConnect.d.ts
+index c6508e5..7aad628 100644
+--- a/node_modules/@wagmi/core/dist/declarations/src/connectors/walletConnect.d.ts
++++ b/node_modules/@wagmi/core/dist/declarations/src/connectors/walletConnect.d.ts
+@@ -6,7 +6,7 @@ declare type WalletConnectOptions = ConstructorParameters<typeof WalletConnectPr
+ export declare class WalletConnectConnector extends Connector<WalletConnectProvider, WalletConnectOptions> {
+     #private;
+     readonly id = "walletConnect";
+-    readonly name = "WalletConnect";
++    readonly name = "Wallet Connect";
+     readonly ready = true;
+     constructor(config: {
+         chains?: Chain[];

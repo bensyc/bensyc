@@ -1,8 +1,9 @@
 {
   "name": "bensyc.eth",
-  "homepage": "http://bensyc.xyz",
-  "version": "0.0.1",
+  "homepage": "https://bensyc.eth.limo",
+  "version": "1.0.0",
   "scripts": {
+    "postinstall": "patch-package",
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
@@ -10,14 +11,18 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^0.1.0",
+    "antd": "^4.23.0",
     "ethers": "^5.6.1",
     "framer-motion": "^6.3.3",
     "fs": "^0.0.1-security",
     "next": "12.1.6",
     "next-images": "^1.8.4",
-    "react": "18.1.0",
+    "react": "^18.2.0",
     "react-device-detect": "^2.2.2",
-    "react-dom": "18.1.0",
+    "react-dom": "^18.1.0",
+    "react-modal": "^3.15.1",
+    "react-router-dom": "^6.3.0",
+    "styled-components": "^5.3.5",
     "wagmi": "^0.3.5",
     "web3": "^1.7.3"
   },

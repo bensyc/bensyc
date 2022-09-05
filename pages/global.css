@@ -1,6 +1,15 @@
 @font-face {
+    font-family: 'RobotoMono';
+    src: url('../assets/RobotoMono.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+		margin: 0;
+		padding: 0;
+}
+
+@font-face {
     font-family: 'EarthOrbiter';
-    src: url('../public/EarthOrbiter.woff2') format('woff2');
+    src: url('../assets/EarthOrbiter.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 		margin: 0;
@@ -9,7 +18,25 @@
 
 @font-face {
     font-family: 'SFMono';
-    src: url('../public/SFMono.woff2') format('woff2');
+    src: url('../assets/SFMono.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+		margin: 0;
+		padding: 0;
+}
+
+@font-face {
+    font-family: 'MajorMono';
+    src: url('../assets/MajorMono.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+		margin: 0;
+		padding: 0;
+}
+
+@font-face {
+    font-family: 'Bioliquid';
+    src: url('../assets/Bioliquid.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 		margin: 0;
@@ -28,46 +55,74 @@ body {
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(90deg, rgba(112,118,255,1) 0%, rgba(226,28,0,0.65) 100%);
-  background-size: cover;
-  border-radius: 0px !important;
+  background: linear-gradient(-45deg, rgba(238,119,82,1) 0%, rgba(231,60,126,1) 20%, rgba(35,166,213,1) 40%, rgba(35,213,171,1) 60%, rgba(213,213,35,1) 80%, rgba(60,255,44,1) 100%);
+  animation: gradient 20s ease infinite;
+  background-size: 400% 400%;
+  border-radius: 4px !important;
+  color: white;
 }
 
 .page {
+  background: url('../assets/background.png');
+  background-size: cover;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   margin: 0 auto;
+  border-radius: 4px;
 }
 
-.info {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  margin: 0 auto;
-  width: 70%;
+.avatar {
+  background: linear-gradient(-45deg, rgba(238,119,82,1) 0%, rgba(231,60,126,1) 20%, rgba(35,166,213,1) 40%, rgba(35,213,171,1) 60%, rgba(213,213,35,1) 80%, rgba(60,255,44,1) 100%);
+  animation: gradient 20s ease infinite;
+  background-size: 400% 400%;
+  border-radius: 6px;
 }
 
 .route {
   font-size: 20px;
   font-weight: 400;
   color: white;
+  background: linear-gradient(to right, #3898FF, #7A70FF);
+  padding: 5px 15px;
+  border-radius: 3px;
+  transition: all ease 100ms;
+}
+
+.route:hover {
+  cursor: pointer;
+  transform: scale(1.2);
 }
 
 .container {
   align-items: center;
   justify-content: center;
-  width: 100%;
   height: 100%;
   padding: 10px 20px;
-  background-image: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+  background: linear-gradient(45deg, rgba(50,50,50,1) 0%, rgba(6,13,14,1) 100%);
+  background-size: cover;
   border-radius: 10px;
   border-color: black;
-  padding-bottom: 100px;
+  padding-bottom: 10px;
   padding-left: 50px;
   padding-right: 50px;
+}
+
+.icon{
+  align-items: center;
+  justify-content: center;
+  width: 13px;
+  height: 13px;
+  margin-bottom: -1.5px;
+}
+
+.largeicon{
+  align-items: center;
+  justify-content: center;
+  width: 19px;
+  height: 19px;
+  margin-bottom: -2.5px;
 }
 
 .button {
@@ -86,11 +141,11 @@ body {
   transition: all ease 100ms;
 }
 
-.refreshButton {
+.desktop {
   appearance: none;
-  border: none;
+  border: 0px solid #000;
   font-family: "EarthOrbiter";
-  background-image: linear-gradient(to right, #3898FF, #7A70FF);
+  background: linear-gradient(to right, #3898FF, #7A70FF);
   line-height: 1;
   font-size: 16px;
   font-weight: 600;
@@ -100,7 +155,22 @@ body {
   align-items: left;
   color: white;
   transition: all ease 100ms;
-  margin-left: 104px;
+}
+
+.mobile {
+  appearance: none;
+  border: 0px solid #000;
+  font-family: "EarthOrbiter";
+  background: linear-gradient(to right, #3898FF, #7A70FF);
+  line-height: 1;
+  font-size: 12px;
+  font-weight: 600;
+  height: 25px;
+  padding: 3px 12px;
+  border-radius: 3px;
+  align-items: left;
+  color: white;
+  transition: all ease 100ms;
 }
 
 button:not(:disabled):hover {
@@ -116,21 +186,21 @@ button[data-mint-started="true"] {
   position: relative;
 }
 
-  button[data-mint-started="true"]::after {
-    animation-name: pulse;
-    animation-duration: 500ms;
-    animation-direction: alternate;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    background-color: #FF6257;
-    border-radius: inherit;
-    bottom: 0;
-    content: ' ';
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
+button[data-mint-started="true"]::after {
+  animation-name: pulse;
+  animation-duration: 500ms;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  background-color: #FF6257;
+  border-radius: inherit;
+  bottom: 0;
+  content: ' ';
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
 
 button[data-mint-done="true"] {
    opacity: 0;
@@ -149,26 +219,26 @@ h3 { font-size: 24px; weight: 800 }
 h4 { font-size: 18px; weight: 800 }
 
 a:link {
-  color: blue;
-  background: rgba(255,255,255,0.7);
+  color: white;
+  background: rgba(255,255,255,0.5);
   text-decoration: none;
-  padding: 3px 10px;
+  padding: 2px 5px;
   border-radius: 3px;
 }
 
 a:visited {
-  color: blue;
-  background: rgba(255,255,255,0.7);
+  color: white;
+  background: rgba(255,255,255,0.5);
   text-decoration: none;
-  padding: 3px 10px;
+  padding: 2px 5px;
   border-radius: 3px;
 }
 
 a:hover {
-  color: white;
-  background: black;
+  color: black;
+  background: white;
   text-decoration: none;
-  padding: 3px 10px;
+  padding: 2px 5px;
   border-radius: 3px;
 }
 @keyframes pulse {
@@ -183,4 +253,16 @@ iframe {
   width: 100%;
   border-radius: 0.5rem;
   filter: invert(1);
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
