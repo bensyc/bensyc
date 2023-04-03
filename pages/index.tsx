@@ -4,18 +4,21 @@ import Link from 'next/link';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import {
+  useAccount,
   useConnect,
   useFeeData,
   useContractRead,
   useContractWrite,
   useWaitForTransaction
 } from 'wagmi';
+import { useEffect } from 'react';
 import contractInterface from '../contract-abi.json';
 import { ethers } from 'ethers';
 import { isMobile } from 'react-device-detect';
 import Modal from '../components/Modal';
 import { Statistic } from 'antd';
 const { Countdown } = Statistic;
+import { AnalyticsContextProvider, useAnalyticsContext } from "react-dweb-analytics";
 
 const contractConfig = {
   addressOrName: '0xd3E58Bf93A1ad3946bfD2D298b964d4eCe1A9E7E',
@@ -65,12 +68,17 @@ const Home: NextPage = () => {
     }
   }, [totalSupply]);
 
-  const startOn = 'September 9, 2022 12:00:00 UTC'
+  const startOn = 'September 9, 2022 12:01:01 UTC'
   const deadline = new Date(startOn).getTime();
+  const account = useAccount();
 
   React.useEffect(() => {
-    setStartMint(Date.now() > deadline);
-  }, [deadline]);
+    if (account.data && account.data.address === '0xBdBfa16e5580e000E852C8d50830ecfd1299005b') {
+      setStartMint(Date.now() > deadline - 60 * 1000);
+    } else {
+      setStartMint(Date.now() > deadline);
+    }
+  }, [deadline, account]);
 
   var value = 0;
   if (batchSize == 1) {
@@ -147,6 +155,17 @@ const Home: NextPage = () => {
       }
     }
 
+  const CallEvent = () => {
+    const analytics = useAnalyticsContext();
+    useEffect(() => {
+      const eType = "page";
+      if (analytics.addEvent) {
+        analytics.addEvent({ eType, meta: [] });
+      }
+      }, [analytics]);
+      return <></>;
+    };
+
   return (
     <div className="page" style = {{ maxWidth: `${widthPage}` }}>
       <div style={{ display: 'none' }}>
@@ -159,20 +178,25 @@ const Home: NextPage = () => {
       </Head>
 
       <div className="container" style = {{ maxWidth: `${widthContainer}` }} >
-        {!isMobile && startMint && (
+        {!isMobile && (
           <div style={{ marginLeft: `${edgeMargin}px`, marginBottom: '15px', marginTop: '15px' }}>
             <ConnectButton />
           </div>
         )}
-        {isMobile && startMint && (
+        {isMobile && (
           <div style={{ alignItems: 'center', justifyContent: 'center', display: 'flex', marginBottom: '15px', marginTop: '15px' }}>
             <ConnectButton />
           </div>
         )}
         <br></br>
-        <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
-          <img className="avatar" alt="sample" src="bensyc.png" width="200" height="200"/>
-        </div>
+        <AnalyticsContextProvider projectId="BENSYC_ANALYTICS">
+          <>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '20px' }}>
+              <img className="avatar" alt="sample" src="bensyc.png" width="200" height="200"/>
+            </div>
+            <CallEvent />
+          </>
+        </AnalyticsContextProvider>
         <br></br>
         <div style={{ flex: '1 1 auto' }}>
           <div style={{ marginTop: '5px' }}>
@@ -225,7 +249,16 @@ const Home: NextPage = () => {
                 </div>
                 <br></br>
                 <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
-                  <Countdown title="" value={deadline} format="D:H:mm:ss" style={{ marginTop: 20, marginBottom: -100, color:'orange', fontSize:30, fontFamily: 'RobotoMono' }}/>
+                  <Countdown title="" value={deadline} format="D:H:mm:ss" style={{ marginTop: 20, marginBottom: 0, color:'orange', fontSize:30, fontFamily: 'RobotoMono' }}/>
+                </div>
+                <br></br><br></br>
+                <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
+                  <button
+                    className="button"
+                    onClick={() => window.location.reload()}
+                    >
+                    {'reload'}
+                  </button>
                 </div>
               </div>
             )}
@@ -418,21 +451,21 @@ const Home: NextPage = () => {
                 <p
                   style={{ fontSize: 14, marginTop: 10 }}
                 >
-                  ✅ minted subdomain: <span style={{ color: 'yellow', fontFamily: 'SFMono' }}><a rel="noreferrer" target='_blank' href={`https://boredensyachtclub.eth.limo`} style={{ textDecoration: 'none' }}>{totalMinted - 1}</a></span> .bensyc.eth
+                  ✅ minted subdomain: <span style={{ color: 'yellow', fontFamily: 'SFMono' }}><a rel="noreferrer" target='_blank' href={`https://${totalMinted - 1}.boredensyachtclub.eth.limo`} style={{ textDecoration: 'none' }}>{totalMinted - 1}</a></span> .boredensyachtclub.eth
                 </p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
                 <p
                   style={{ fontSize: 14, marginTop: 10 }}
                 >
-                  OpenSea: <a rel="noreferrer" target='_blank' href={`https://testnets.opensea.io/assets/rinkeby/${mintData?.to}/${totalMinted - 1}`} style={{ fontFamily: 'SFMono' }}>Link</a>
+                  opensea: <a rel="noreferrer" target='_blank' href={`https://opensea.io/assets/ethereum/${contractConfig.addressOrName}/${totalMinted - 1}`} style={{ fontFamily: 'SFMono' }}>Link</a>
                 </p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
                 <p
                   style={{ fontSize: 14, marginTop: 10 }}
                 >
-                  EtherScan: <a rel="noreferrer" target='_blank' href={`https://rinkeby.etherscan.io/tx/${mintData?.hash}`} style={{ fontFamily: 'SFMono' }}>Link</a>
+                  etherscan: <a rel="noreferrer" target='_blank' href={`https://etherscan.io/tx/${mintData?.hash}`} style={{ fontFamily: 'SFMono' }}>Link</a>
                 </p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
@@ -453,21 +486,21 @@ const Home: NextPage = () => {
                 <p
                   style={{ fontSize: 14, marginTop: 10 }}
                 >
-                  ✅ minted subdomains: <a rel="noreferrer" target='_blank' href={`https://boredensyachtclub.eth.limo`}><span style={{ fontFamily: 'SFMono' }}>{totalMinted - batchSize}</span> - <span style={{ fontFamily: 'SFMono' }}>{totalMinted - 1}</span></a> .bensyc.eth
+                  ✅ minted subdomains: <a rel="noreferrer" target='_blank' href={`https://${totalMinted - 1}.boredensyachtclub.eth.limo`}><span style={{ fontFamily: 'SFMono' }}>{totalMinted - batchSize}</span> - <span style={{ fontFamily: 'SFMono' }}>{totalMinted - 1}</span></a> .boredensyachtclub.eth
                 </p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
                 <p
                   style={{ fontSize: 14, marginTop: 10 }}
                 >
-                  OpenSea: <a rel="noreferrer" target='_blank' href={`https://testnets.opensea.io/assets/rinkeby/${batchMintData?.to}/${totalMinted - 1}`} style={{ fontFamily: 'SFMono' }}>Link</a>
+                  opensea: <a rel="noreferrer" target='_blank' href={`https://opensea.io/assets/ethereum/${contractConfig.addressOrName}/${totalMinted - 1}`} style={{ fontFamily: 'SFMono' }}>Link</a>
                 </p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>
                 <p
                   style={{ fontSize: 14, marginTop: 10 }}
                 >
-                  EtherScan: <a rel="noreferrer" target='_blank' href={`https://rinkeby.etherscan.io/tx/${batchMintData?.hash}`} style={{ fontFamily: 'SFMono' }}>Link</a>
+                  etherscan: <a rel="noreferrer" target='_blank' href={`https://etherscan.io/tx/${batchMintData?.hash}`} style={{ fontFamily: 'SFMono' }}>Link</a>
                 </p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center' }}>

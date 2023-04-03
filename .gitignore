@@ -3,7 +3,6 @@ node_modules/
 package-lock.json
 out*
 build*
-public
 */img
 .next
 .DS_Store

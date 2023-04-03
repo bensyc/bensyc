@@ -34,6 +34,28 @@
   {
     "inputs": [
       {
+        "internalType": "string[5]",
+        "name": "list",
+        "type": "string[5]"
+      }
+    ],
+    "name": "IllegalBatch",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "digits",
+        "type": "string"
+      }
+    ],
+    "name": "IllegalENS",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "size",
         "type": "uint256"
@@ -71,6 +93,17 @@
   {
     "inputs": [
       {
+        "internalType": "string",
+        "name": "digits",
+        "type": "string"
+      }
+    ],
+    "name": "NotOwnerOfENS",
+    "type": "error"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address",
         "name": "owner",
         "type": "address"
@@ -103,11 +136,6 @@
       }
     ],
     "name": "OnlyDev",
-    "type": "error"
-  },
-  {
-    "inputs": [],
-    "name": "OversizedBatch",
     "type": "error"
   },
   {
@@ -404,11 +432,29 @@
         "internalType": "uint256",
         "name": "batchSize",
         "type": "uint256"
+      },
+      {
+        "internalType": "string[5]",
+        "name": "list",
+        "type": "string[5]"
       }
     ],
     "name": "batchMint",
     "outputs": [],
     "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "bigBatch",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
@@ -494,7 +540,13 @@
     "type": "function"
   },
   {
-    "inputs": [],
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "digits",
+        "type": "string"
+      }
+    ],
     "name": "mint",
     "outputs": [],
     "stateMutability": "payable",
@@ -563,9 +615,9 @@
     "name": "royalty",
     "outputs": [
       {
-        "internalType": "uint256",
+        "internalType": "uint8",
         "name": "",
-        "type": "uint256"
+        "type": "uint8"
       }
     ],
     "stateMutability": "view",
@@ -716,9 +768,9 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
+        "internalType": "uint8",
         "name": "_royalty",
-        "type": "uint256"
+        "type": "uint8"
       }
     ],
     "name": "setRoyalty",

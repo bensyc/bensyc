@@ -1,6 +1,6 @@
 {
   "name": "bensyc.eth",
-  "homepage": "https://bensyc.eth.limo",
+  "homepage": "https://bensyc.xyz",
   "version": "1.0.0",
   "scripts": {
     "postinstall": "patch-package",
@@ -15,11 +15,13 @@
     "ethers": "^5.6.1",
     "framer-motion": "^6.3.3",
     "fs": "^0.0.1-security",
+    "ipfs-http-client": "^58.0.1",
     "next": "12.1.6",
     "next-images": "^1.8.4",
     "react": "^18.2.0",
     "react-device-detect": "^2.2.2",
     "react-dom": "^18.1.0",
+    "react-dweb-analytics": "^0.0.7",
     "react-modal": "^3.15.1",
     "react-router-dom": "^6.3.0",
     "styled-components": "^5.3.5",
