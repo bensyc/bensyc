@@ -2,8 +2,8 @@
 
 Bored ENS Yacht Club (BENSYC) is the first ENS 10k subdomain collection where the subdomain NFT is your membership to the club.
 
-# Contract**
-[0xd3e58...a9e7e](https://etherscan.io/address/0xd3E58Bf93A1ad3946bfD2D298b964d4eCe1A9E7E)
+# Contract
+[`0xd3E58Bf93A1ad3946bfD2D298b964d4eCe1A9E7E`](https://etherscan.io/address/0xd3E58Bf93A1ad3946bfD2D298b964d4eCe1A9E7E)
 
 # What is the Purpose & Vision of BENSYC?
 
